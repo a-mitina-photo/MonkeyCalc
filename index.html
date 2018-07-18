@@ -1,5 +1,5 @@
 <html><head>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta http-equiv="content-type" content="text/html; charset=windows-1251">
   <title>Monkey's Calculator</title>
  </head>
  <body>
@@ -109,6 +109,8 @@ m=0;
 mem.value='';
 }
 function kpress(e){
+if (tp1.checked){num1.focus()}
+if (tp2.checked){num2.focus()}
 k=-1;
 c=-1;
 ch=-1;
