@@ -1,0 +1,423 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=windows-1251">
+  <title>Monkey's Calculator</title>
+ </head>
+ <body>
+<form name="form">
+<h1>Калькулятор c четырехуровневым фильтром ввода</h1>
+<h2>Поддерживается ввод арифметических действий с клавиатуры</h2>
+<p></p>
+<p></p>
+<table frame="BOX" width="210" bordercolor="#548DD4" border="3">
+ <tbody><tr>
+   <td colspan="4" nowrap="nowrap" bgcolor="blue"><font size="3" face="Arial" color="white" style="margin-left:3"> Monkey's Calculator v 1.3</font><input style="width:15; height:20; margin-left:10; text-align: center; font-size:12" value="X" onclick="fx()" type="button"></td>
+ </tr>
+
+ <tr>
+   <td colspan="4" nowrap="nowrap"><input id="tp1" onclick="document.form.num1.focus()" name="tp1" type="radio"><input size="23" name="num1" maxlength="18" onfocus="t1f()" onkeyup="filtr()" onblur="lostfocus()" value="-2462937" type="text"><input size="1" value="x" readonly="readonly" type="text"></td>
+ </tr>
+ <tr>
+   <td colspan="4" nowrap="nowrap"><input id="tp2" onclick="document.form.num2.focus()" name="tp1" type="radio"><input size="23" name="num2" maxlength="18" onfocus="t2f()" onkeyup="filtr()" onblur="lostfocus()" value="2486723" type="text"><input size="1" value="y" readonly="readonly" type="text"></td>
+ </tr>
+ <tr>
+   <td colspan="4" nowrap="nowrap"><input id="tp3" name="tp1" checked="checked" type="radio"><input size="23" onfocus="t3f()" maxlength="18" name="result" value="-2462937" readonly="readonly" type="text"><input size="1" name="znak" value="-" readonly="readonly" type="text"></td>
+ </tr>
+<tr>
+<td width="50"><input value="1" onclick="f1()" style="color:blue; width:48; font-size:25; height:33; font-family:'Times New Roman'" type="button"></td>
+<td width="50"><input value="2" onclick="f2()" style="color:blue; width:48; font-size:25; height:33; font-family:'Times New Roman'" type="button"></td>
+<td width="50"><input value="3" onclick="f3()" style="color:blue; width:48; font-size:25; height:33; font-family:'Times New Roman'" type="button"></td>
+<td width="50"><input value="+" onclick="fp()" style="color:red; width:48; font-size:25; height:33; font-family:'Times New Roman'" type="button"></td>
+</tr>
+<tr>
+<td><input value="4" onclick="f4()" style="color:blue; width:48; font-size:25; height:33; font-family:'Times New Roman'" type="button"></td>
+<td><input value="5" onclick="f5()" style="color:blue; width:48; font-size:25; height:33; font-family:'Times New Roman'" type="button"></td>
+<td><input value="6" onclick="f6()" style="color:blue; width:48; font-size:25; height:33; font-family:'Times New Roman'" type="button"></td>
+<td><input value="-" onclick="fm()" style="color:red; width:48; font-size:25; height:33; font-size:25; height:33; font-family:'Times New Roman'" type="button"></td> </tr>
+<tr>
+<td><input value="7" onclick="f7()" style="color:blue; width:48; font-size:25; height:33; font-family:'Times New Roman'" type="button"></td>
+<td><input value="8" onclick="f8()" style="color:blue; width:48; font-size:25; height:33; font-family:'Times New Roman'" type="button"></td>
+<td><input value="9" onclick="f9()" style="color:blue; width:48; font-size:25; height:33; font-family:'Times New Roman'" type="button"></td>
+<td><input value="*" onclick="fu()" style="color:red; width:48; font-size:25; height:33; font-family:'Times New Roman'" type="button"></td>
+</tr>
+<tr>
+<td><input value="±" onclick="fpm()" style="color:red; font-size:25; height:33; width:48; font-family:'Times New Roman'" type="button"></td>
+<td><input value="0" onclick="f0()" style="color:blue; font-size:25; height:33; width:48; font-family:'Times New Roman'" type="button"></td>
+<td><input value="•" onclick="ft()" style="color:red; font-size:30; height:33; width:48; font-family:'Times New Roman'" type="button"></td>
+<td><input value="/" onclick="fd()" style="color:red; font-size:25; height:33; width:48; font-family:'Times New Roman'" type="button"></td>
+</tr>
+<tr>
+<td><input value="C" style="color:green; width:48; font-size:25; height:33; font-family:'Times New Roman'" type="reset"></td>
+<td><input value="CE" onclick="fce()" style="color:green; width:48; font-size:25; height:33; font-family:'Times New Roman'" type="button"></td>
+<td colspan="2"><input value="===" onclick="frav()" style="color:blue; width:102; height:33; font-size:25; font-family:'Times New Roman'" type="button"></td>
+</tr>
+<tr>
+<td><input value="%" onclick="fproc()" style="color:red; font-size:22; height:33; width:48; font-family:'Times New Roman'" type="button"></td>
+<td><input value="x^y" onclick="fkv()" style="color:red; width:48; font-size:22; height:33; font-family:'Times New Roman'" type="button"></td>
+<td><input value="1/x" onclick="fdr()" style="color:red; width:48; font-size:22; height:33; font-family:'Times New Roman'" type="button"></td>
+<td><input name="calcu" value="&#8730;" onclick="fko()" style="color:red; width:48; font-size:25; height:33; font-family:'Times New Roman'" type="button"></td>
+</tr>
+<tr>
+<td><input value="M+" ;="" onclick="msum()" style="color:green; font-size:25; height:33; width:48; font-family:'Times New Roman'" type="button">
+</td>
+<td><input value="M-" ;="" onclick="mmin()" style="color:green; font-size:25; height:33; width:48; font-family:'Times New Roman'" type="button">
+</td>
+<td><input value="MC" ;="" onclick="mc()" style="color:green; font-size:25; height:33; width:48; font-family:'Times New Roman'" type="button">
+</td>
+<td><input size="4" onfocus="t3f()" maxlength="4" name="memory" readonly="readonly" style="height:33; font-family:'Times New Roman'" type="text">
+</td>
+</tr>
+</tbody></table>
+
+<script language="JavaScript">
+<!--
+var t2;
+var f;
+var s;
+var c;
+var ch;
+var k;
+var w0=0;
+var w1=-1;
+var w2;
+var fl1;
+var min1;
+var min2;
+var num1=document.form.num1;
+var num2=document.form.num2;
+var zn=document.form.znak;
+var res=document.form.result;
+var tp1=document.getElementById("tp1");
+var tp2=document.getElementById("tp2");
+var tp3=document.getElementById("tp3");
+var m;
+var mem=document.form.memory;
+
+
+
+function fx(){alert("Я не хочу, чтобы меня закрывали :(")}
+
+function msum(){
+if (tp1.checked){m=num1.value}
+else if (tp2.checked) {m=num2.value}
+else if (tp3.checked) {m=res.value}
+     else {m=res.value}
+mem.value="M";
+}
+
+function mmin()
+{if (tp1.checked){
+num1.value=m}
+else if (tp2.checked) {num2.value=m}
+}
+
+function mc(){
+m=0;
+mem.value='';
+}
+
+
+function kpress(e){
+k=-1;
+c=-1;
+ch=-1;
+w2=-1;
+if (!e) e = event;
+if (e.keyCode){k = e.keyCode;
+	if (k > 47 && k<58){w1=0} else if (k==61){w1=0}} //функция, исключающая возможность ввода "неправильных" символов при нажатии мета-клавиш в FireFox, Opera и др. Определяет key-code нажатой кнопки
+if (e.charCode){ch = e.charCode;
+	if (ch > 47 && ch<58){w0=-1} else if (ch==61){w0=-1}} //функция, исключающая возможность ввода "неправильных" символов при нажатии мета-клавиш в FireFox, Opera и др. Определяет код введенного символа
+if (e.which){var wh = e.which}
+else {w2=0};
+if (ch==-1) {c=k}
+else {c=ch}
+
+if (w2==w0 || w2==w1){
+	if (c == 45) {
+	var z = fm();
+	e.preventDefault ? e.preventDefault() : (e.returnValue=false);
+	}
+	if (c == 43) {
+	var z = fp();
+	e.preventDefault ? e.preventDefault() : (e.returnValue=false);
+	}
+	if (c == 47) {
+	var z = fd();
+	e.preventDefault ? e.preventDefault() : (e.returnValue=false);
+	}
+	if (c == 42) {
+	var z = fu();
+	e.preventDefault ? e.preventDefault() : (e.returnValue=false);
+	}
+	if (c == 37) {
+	var z = fproc();
+	e.preventDefault ? e.preventDefault() : (e.returnValue=false);
+	}
+	if (c == 94) {
+	var z = fst();
+	e.preventDefault ? e.preventDefault() : (e.returnValue=false);
+	}
+	if (c == 61) {
+	var z = frav();
+	e.preventDefault ? e.preventDefault() : (e.returnValue=false);
+	}
+
+	if (c>47 && c<58) {
+		if (tp3.checked){var tf=t1f()}
+		if (tp1.checked){num1.value=num1.value+String.fromCharCode(c)}
+		else {num2.value=num2.value+String.fromCharCode(c)}
+	e.preventDefault ? e.preventDefault() : (e.returnValue=false);
+	}
+	
+	if(c==46 || c==44){
+	if (tp3.checked){var tf=t1f()}
+	var ftchk=ft();
+	e.preventDefault ? e.preventDefault() : (e.returnValue=false);}
+	}
+}
+
+    document.onkeypress=kpress;
+
+function filtr()
+{num1.value = num1.value.replace(/[^0-9\.,\-+e]/g,'');
+num1.value = num1.value.replace(/,/g,'.');
+num2.value = num2.value.replace(/[^0-9\.,\-+e]/g,'');
+num2.value = num2.value.replace(/,/g,'.');}
+
+function lostfocus()
+{var fltr=filtr()
+num1.value = num1.value.replace(/^0+(?!\.)/g,'');
+num2.value = num2.value.replace(/^0+(?!\.)/g,'');
+num1.value = num1.value.replace(/\.+/g,'.');
+num2.value = num2.value.replace(/\.+/g,'.');
+num1.value = num1.value.replace(/\.0*$/g,'');
+num2.value = num2.value.replace(/\.0*$/g,'');
+}
+
+	
+function nan(){
+if(num1.value=="NaN" || num1.value=="Infinity"){
+num1.value="";
+alert ("Некорректное действие")}
+if(num2.value=="NaN" || num2.value=="Infinity"){
+num2.value="";
+alert ("Некорректное действие")}
+if(res.value=="NaN" || res.value=="Infinity"){
+res.value="";
+alert ("Некорректное действие")}
+	}
+
+	function t1f() {tp1.checked="yes"}
+
+	function t2f() {tp2.checked="yes"}
+
+	function t3f() {tp3.checked="yes"}
+
+	function f1() {fl1=0;
+if (tp1.checked)
+{num1.value+='1'}
+else if (tp2.checked) {num2.value+='1'}
+}
+
+	function f2() {fl1=0;
+if (tp1.checked)
+{num1.value+='2'}
+else if (tp2.checked) {num2.value+='2'}
+}
+
+	function f3() {fl1=0;
+if (tp1.checked)
+{num1.value+='3'}
+else if (tp2.checked) {num2.value+='3'}
+}
+
+	function f4() {fl1=0;
+if (tp1.checked)
+{num1.value+='4'}
+else if (tp2.checked) {num2.value+='4'}
+}
+
+	function f5() {fl1=0;
+if (tp1.checked)
+{num1.value+='5'}
+else if (tp2.checked) {num2.value+='5'}
+}
+
+	function f6() {fl1=0;
+if (tp1.checked)
+{num1.value+='6'}
+else if (tp2.checked) {num2.value+='6'}
+}
+
+	function f7() {fl1=0;
+if (tp1.checked)
+{num1.value+='7'}
+else if (tp2.checked) {num2.value+='7'}
+}
+
+	function f8() {fl1=0;
+if (tp1.checked)
+{num1.value+='8'}
+else if (tp2.checked) {num2.value+='8'}
+}
+
+	function f9() {fl1=0;
+if (tp1.checked)
+{num1.value+='9'}
+else if (tp2.checked) {num2.value+='9'}
+}
+
+	function f0() {fl1=0;
+if (tp1.checked)
+{num1.value+='0'}
+else if (tp2.checked) {num2.value+='0'}
+}
+
+	function ft() {fl1=0;
+if (tp1.checked)
+{var to = num1.value.indexOf('.');
+if (to < 0) {num1.value += '.'}
+}
+else {var to = num2.value.indexOf('.');
+if (to < 0) {num2.value += '.'}
+}
+}
+
+	function fp() {fl1=0;
+t2 = 1;
+tp2.checked = "yes";
+num2.focus();
+zn.value="+";
+}
+
+	function fu() {fl1=0;
+t2 = 3;
+tp2.checked = "yes";
+num2.focus();
+zn.value="*";
+}
+
+	function fm() {fl1=0;
+tp2.checked = "yes";
+t2 = 2;
+num2.focus();
+zn.value="-";
+}
+
+	function fd() {fl1=0;
+t2 = 4;
+tp2.checked = "yes";
+num2.focus();
+zn.value="/";
+}
+
+	function fst() {fl1=0;
+t2 = 6
+tp2.checked = "yes";
+num2.focus();
+zn.value="^";
+}
+
+
+	function fpm() {fl1=0;
+if (tp1.checked)
+{num1.value=eval(num1.value) *(-1)}
+if (tp2.checked)
+{num2.value=eval(num2.value) *(-1)}
+if (tp3.checked)
+{res.value = eval(res.value) *(-1)}
+var n1=nan();
+}
+
+	function fdr() {fl1=0;
+if (tp1.checked && eval(num1.value)!=0)
+{num1.value = 1 / eval(num1.value)}
+else if(tp1.checked && eval(num1.value)==0)
+{alert ("Деление на 0 невозможно")}
+
+if (tp2.checked && eval(num2.value)!=0)
+{num2.value = 1 / eval(num2.value)}
+else if(tp2.checked && eval(num2.value)==0)
+{alert ("Деление на 0 невозможно")}
+
+if (tp3.checked && eval(res.value)!=0)
+{res.value = 1 / eval(res.value)}
+else if(tp3.checked && eval(res.value)==0)
+{alert ("Деление на 0 невозможно")}
+
+var n1=nan();
+}
+
+	function fko() {fl1=0;
+if (tp1.checked && eval(num1.value)>=0)
+{num1.value = Math.sqrt(eval(num1.value))}
+else if(tp1.checked && eval(num1.value)<0)
+{alert ("Операция невозможна, так как подкоренное выражение меньше нуля")}
+if (tp2.checked && eval(num2.value)>=0)
+{num2.value = Math.sqrt(eval(num2.value))}
+else if(tp2.checked && eval(num2.value)<0)
+{alert ("Операция невозможна, так как подкоренное выражение меньше нуля")}
+if (tp3.checked && eval(num2.value)>=0)
+{res.value = Math.sqrt(eval(res.value))}
+else if(tp1.checked && eval(res.value)<0)
+{alert ("Операция невозможна, так как подкоренное выражение меньше нуля")}
+var n1=nan();
+}
+
+	function fce() {fl1=0;
+if (tp1.checked)
+{num1.value = ""}
+if (tp2.checked)
+{num2.value = ""}
+if (tp3.checked)
+{res.value = ""}
+var n1=nan();
+}
+
+	function fproc() {fl1=0;
+if (num1.value!="" && num2.value!="")
+{num2.value = eval(num2.value)*eval(num1.value)/100}
+var n1=nan();
+}
+
+	function frav() {
+if(t2==""){
+	if(zn.value=='+'){t2=1}
+	if(zn.value=='-'){t2=2}
+	if(zn.value=='*'){t2=3}
+	if(zn.value=='/'){t2=4}
+	if(zn.value=='^'){t2=6}
+}
+if (fl1==1) {num1.value=res.value}
+if (num2.value=="" && num1.value=="") {t2=0}
+else if (num2.value=="" && num1.value!=""){num2.value=num1.value}
+else if (num1.value=="" && res.value!=""){num1.value=res.value}
+else if (res.value=="" && num1.value==""){num1.value=num2.value}
+
+f = eval(num1.value);
+s = eval(num2.value);
+
+if    (t2 == 1)
+{res.value = f+s;}
+else if (t2 == 2)
+{res.value = f-s;}
+else if (t2 == 3)
+{res.value = f*s;}
+else if (t2 == 4)
+{res.value = f/s;}
+else if (t2 == 6)
+{res.value = Math.pow(f,s);}
+else if (t2 == 0) {alert ("Некорректное действие")}
+
+f = "";
+s = "";
+fl1=1;
+tp3.checked="yes";
+
+var n1=nan();
+}
+
+//-- > 
+</script>
+</form>
+
+</body></html>
