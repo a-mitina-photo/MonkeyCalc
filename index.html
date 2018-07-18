@@ -52,7 +52,7 @@
 </tr>
 <tr>
 <td><input value="%" onclick="fproc()" style="color:red; font-size:22; height:33; width:48; font-family:'Times New Roman'" type="button"></td>
-<td><input value="x^y" onclick="fkv()" style="color:red; width:48; font-size:22; height:33; font-family:'Times New Roman'" type="button"></td>
+<td><input value="x^y" onclick="fst()" style="color:red; width:48; font-size:22; height:33; font-family:'Times New Roman'" type="button"></td>
 <td><input value="1/x" onclick="fdr()" style="color:red; width:48; font-size:22; height:33; font-family:'Times New Roman'" type="button"></td>
 <td><input name="calcu" value="&#8730;" onclick="fko()" style="color:red; width:48; font-size:25; height:33; font-family:'Times New Roman'" type="button"></td>
 </tr>
@@ -277,12 +277,14 @@ tp2.checked = "yes";
 num2.focus();
 zn.value="/";
 }
+
 	function fst() {fl1=0;
-t2 = 6
 tp2.checked = "yes";
+t2 = 6;
 num2.focus();
 zn.value="^";
 }
+	
 	function fpm() {fl1=0;
 if (tp1.checked)
 {num1.value=eval(num1.value) *(-1)}
